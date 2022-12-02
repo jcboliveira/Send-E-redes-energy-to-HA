@@ -4,8 +4,18 @@ const csv = require('csvtojson')
 XLSX = require('xlsx');
 
 var Hours =0;
+var host ="";
+var token ="";
+
 process.argv.forEach(function (val, index, array) {
-  Hours = array [2];
+    for (var i=0;i<array.length;++i) {
+        if (array [i]=="--i")
+            host=array [i+1];
+        if (array [i]=="--t")
+            token=array [i+1];
+        if (array [i]=="--h")
+            Hours=array [i+1];
+    }
 });
 
 
@@ -78,7 +88,7 @@ files_in.forEach(element => {
 
                     }
                     console.log('Data inicial:' + initDate);
-                    sendToHA1.sendToHA(jsonDataVar, initDate);
+                    sendToHA1.sendToHA(jsonDataVar, initDate, host,token);
 
                 })
         });

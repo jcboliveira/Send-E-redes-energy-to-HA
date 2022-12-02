@@ -1,19 +1,17 @@
 const W3CWebSocket = require("websocket").w3cwebsocket; // npm install websocket
 
 
-const host = "192.168.50.230";
 const port = 8123;
 const protocol = "ws"; // ws or wss if ssl
 
 // long lived access token from profile > Create Token
-const access_token ="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJmZDMyOTAyNTkxZTA0MWZhYjc4NDUyMDBiY2I0MGJiYyIsImlhdCI6MTY2OTgwMDQ1MCwiZXhwIjoxOTg1MTYwNDUwfQ.eRRZBoyfTRo3uKvZ-W9WzxtXKwbRjslT1ncOVgOYtOU";
 const entityName = "e-redes";
 const entityId = "energy_consumption_kwh";
 
 // datetime must be in ISO 8601 format with timezone
 // stats = [{start: '2022-01-01T00:00:00z', sum: 0},...]
 // start_search_time = datetime from which to search for old total
-exports.sendToHA = function (stats, start_search_time) {
+exports.sendToHA = function (stats, start_search_time, host, access_token) {
   const client = new W3CWebSocket(
     `${protocol}://${host}:${port}/api/websocket`
   );
