@@ -1,5 +1,6 @@
 const W3CWebSocket = require("websocket").w3cwebsocket; // npm install websocket
 
+
 const host = "192.168.50.230";
 const port = 8123;
 const protocol = "ws"; // ws or wss if ssl

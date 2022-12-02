@@ -3,6 +3,12 @@ const fs = require('fs')
 const csv = require('csvtojson')
 XLSX = require('xlsx');
 
+var Hours =0;
+process.argv.forEach(function (val, index, array) {
+  Hours = array [2];
+});
+
+
 const dir = fs.opendirSync('.')
 let dirent
 
@@ -45,7 +51,7 @@ files_in.forEach(element => {
                     var temp = 0.0;
                     var jsonDataVar = [];
                     var dateTemp = new Date(csvRow[0][0]);
-                    var initDate = new Date(dateTemp.setMinutes(dateTemp.getMinutes() - 15 - 60)).toISOString()
+                    var initDate = new Date(dateTemp.setMinutes(dateTemp.getMinutes() - 15 - 60- 60*Hours)).toISOString()
 
                     // var Init = new Date(csvRow [0][0]).toISOString();
                     var dateAnt = new Date().now;
